@@ -50,9 +50,8 @@ class Debian(distros.linux.Linux):
     def set_hostname(self, path, hostname):
         """Update /etc/hostname and /etc/hosts with the specified hostname."""
 
-        f = open(os.path.join(path, 'etc', 'hostname'), 'w')
-        f.write(hostname + "\n")
-        f.close()
+        with open(os.path.join(path, 'etc', 'hostname'), 'w') as f:
+            f.write(hostname + "\n")
 
         hosts = os.path.join(path, 'etc', 'hosts')
 
